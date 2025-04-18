@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Soru Numarasını Giriniz: ");
+            Console.Write("Soru Numarasını Giriniz: ");
             int qNum = int.Parse(Console.ReadLine());
             if (qNum == 1)
             {
@@ -45,7 +45,7 @@
             }
             else if (qNum == 2)
             {
-                #region
+                #region kullanicidan alinan sayilarin toplami
                 // 1. kullanicidan devamli sayi girmesi istenecek
                 // 2. negatif sayi girince dongu bitecek
                 // 3. girilen sayilar tek ise atlanacak
@@ -66,6 +66,51 @@
                 Console.Write("Total: {0}", sum);
                 #endregion
             }
+            else if (qNum == 3)
+            {
+                #region guclu sayiyi bulan algoritma
+                // guclu sayi --> her basamagin faktoriyeli toplaminin kendisine esit olan sayilar 
+                //  -- 1. solution -
+                // 1. kullanicidan bir sayi al, num
+                // 2. int total=0, temp = num;
+                // 3. Factorial() tanimla
+                // 4. temp > 0 oldugu sürece dön
+                //  4.1. temp'in 10'a modunu al, rakam degiskenina ata
+                //  4.2. rakami Factorial()' e gonder, ve dönen sonucu total'e ekle
+                //  4.3. temp / 10;
+                // 5. total == num ise yazdir
+
+                Console.Write("Enter a number: ");
+                int num = int.Parse(Console.ReadLine());
+
+                int total = 0;
+                int temp = num;
+
+                while (temp > 0)
+                {
+                    int rakam = temp % 10;
+                    total += Factorial(rakam);
+                    temp /= 10;
+                }
+
+                if (total == num)
+                {
+                    Console.WriteLine($"{num} sayisi gucludur.");
+                } else
+                {
+                    Console.WriteLine($"{num} sayisi guclu degil!.");
+                }
+                #endregion
+            }
+        }
+        static int Factorial(int number)
+        {
+            int result = 1;
+            for (int i = 1; i <= number; i++)
+            {
+                result *= i;            
+            }
+            return result;
         }
     }
 }
